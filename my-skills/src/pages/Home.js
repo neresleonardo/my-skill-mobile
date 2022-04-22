@@ -5,6 +5,8 @@ import {
             Text, 
             TextInput, 
             View, 
+            FlatList, // Lidar melhor com listas grandes
+            ScrollView
         } from 'react-native';
 
 import { Button } from '../components/button';
@@ -32,11 +34,13 @@ export default function App() {
       <Text style={[styles.title, { marginTop:40}]}>
         My Skills
       </Text>
-     { 
-        mySkills.map(skill => (
-          <SkillCard skill={skill}/>
-        ))
-     }
+      <FlatList 
+          data={mySkills}
+          keyExtractor={item => item}
+          renderItem={({item}) => (
+            <SkillCard skill={item}/>
+          )}
+      ></FlatList>
     </View>
   );
 }
