@@ -5,9 +5,10 @@ import {
             Text, 
             TextInput, 
             View, 
-            TouchableOpacity
         } from 'react-native';
 
+import { Button } from '../components/button';
+import { SkillCard } from '../components/SkillCard'
 export default function App() {
 
   const [newSkill, setNewSkill ] = useState('');
@@ -26,28 +27,13 @@ export default function App() {
             placeholderTextColor="#555"
             onChangeText={setNewSkill}
       />
-      <TouchableOpacity 
-        style={styles.button}
-        activeOpacity={0.7}
-        onPress={handleNewAddNewSkill}
-      >
-          <Text style={styles.buttonText}>Enviar</Text>
-      </TouchableOpacity>
-
+    <Button/>
       <Text style={[styles.title, { marginTop:40}]}>
         My Skills
       </Text>
      { 
       mySkills.map(skill => (
-        <TouchableOpacity 
-          style={styles.buttonSkill}
-          activeOpacity={0.7}
-          key={skill}
-        >
-            <Text style={styles.textSkill}>
-              {skill}
-            </Text>
-        </TouchableOpacity>
+        <SkillCard/>
       ))
      }
     </View>
@@ -74,28 +60,5 @@ const styles = StyleSheet.create({
       marginTop: 20,
       borderRadius: 15,
   },
-  button: {
-     backgroundColor: '#ee7bfa',
-     marginTop: 10,
-     borderRadius: 15,
-     padding: 8,
-     alignItems: 'center'
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  buttonSkill: {
-    borderRadius: 8,
-    backgroundColor: '#1f1e25',
-    padding: 10,
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  textSkill: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+  
 });
