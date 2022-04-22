@@ -13,7 +13,7 @@ import { Button } from '../components/button';
 import { SkillCard } from '../components/skillCard'
 export default function App() {
 
-  const [newSkill, setNewSkill ] = useState('');
+  const [newSkill, setNewSkill ] = useState(''); // Armazena um estado
   const [mySkills, setMySkills] = useState([]); // vetor
 
   function handleNewAddNewSkill() {
@@ -40,7 +40,7 @@ export default function App() {
           renderItem={({item}) => (
             <SkillCard skill={item}/>
           )}
-      ></FlatList>
+      />
     </View>
   );
 }
