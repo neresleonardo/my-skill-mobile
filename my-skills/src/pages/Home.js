@@ -8,7 +8,7 @@ import {
         } from 'react-native';
 
 import { Button } from '../components/button';
-import { SkillCard } from '../components/SkillCard'
+import { SkillCard } from '../components/skillCard'
 export default function App() {
 
   const [newSkill, setNewSkill ] = useState('');
@@ -17,7 +17,7 @@ export default function App() {
   function handleNewAddNewSkill() {
     setMySkills(oldState => [...oldState, newSkill]);
   }
-  // Sempre que a gente for lidar com ações do usuário e bom usar o handle
+  // Sempre que a gente for lidar com açõers do usuário e bom usar o handle
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem vindo, Leonardo!</Text>
@@ -27,14 +27,15 @@ export default function App() {
             placeholderTextColor="#555"
             onChangeText={setNewSkill}
       />
-    <Button/>
+      <Button onPrass={handleNewAddNewSkill} />
+      
       <Text style={[styles.title, { marginTop:40}]}>
         My Skills
       </Text>
      { 
-      mySkills.map(skill => (
-        <SkillCard/>
-      ))
+        mySkills.map(skill => (
+          <SkillCard skill={skill}/>
+        ))
      }
     </View>
   );

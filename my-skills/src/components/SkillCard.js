@@ -1,13 +1,13 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-export function SkillCard() {
+export function SkillCard({skill}) {
     return(
-    <TouchableOpacity style={styles.buttonSkill} key='1'>
-        <Text style={styles.textSkill}>
-            skill
-        </Text>
-    </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonSkill} key={skill}>
+                    <Text style={styles.textSkill}>
+                        {skill}
+                    </Text>
+                </TouchableOpacity>
     )
 }
 
