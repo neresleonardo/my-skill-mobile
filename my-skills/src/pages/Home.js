@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { 
             StyleSheet,
             Text, 
             TextInput, 
             View, 
             FlatList, // Lidar melhor com listas grandes
-            ScrollView
+            ScrollView,
         } from 'react-native';
 
 import { Button } from '../components/button';
@@ -15,14 +15,33 @@ export default function App() {
 
   const [newSkill, setNewSkill ] = useState(''); // Armazena um estado
   const [mySkills, setMySkills] = useState([]); // vetor
+  const [greetings, setGreetings] = useState('')
 
   function handleNewAddNewSkill() {
     setMySkills(oldState => [...oldState, newSkill]);
   }
   // Sempre que a gente for lidar com açõers do usuário e bom usar o handle
+ 
+  useEffect(() => {
+    const currentHours =  new Date().getHours();
+
+    if(currentHours < 12) {
+      setGreetings('Bom Dia');
+    } 
+    else if(currentHours >= 12 && currentHours < 18){
+      setGreetings('Boa Tarde');
+    } 
+    else {
+      setGreetings('Boa Noite');
+    }
+  }, [])
+ 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem vindo, Leonardo!</Text>
+      <Text style={styles.greetings}>
+        {greetings}
+      </Text>
       <TextInput
             style={styles.input}
             placeholder="Nova skill"
@@ -65,5 +84,8 @@ const styles = StyleSheet.create({
       marginTop: 20,
       borderRadius: 15,
   },
+  greetings: {
+    color:  '#ccc',
+  }
   
 });
